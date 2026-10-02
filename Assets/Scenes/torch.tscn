@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5cm0d4icyl5n"]
+
+[ext_resource type="Texture2D" uid="uid://cbkj8xy8qi4u3" path="res://Assets/Sprites/Custom/torch_anim.png" id="1"]
+
+[sub_resource type="Gradient" id="Gradient_osasy"]
+offsets = PackedFloat32Array(0, 0.707792, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dynvd"]
+gradient = SubResource("Gradient_osasy")
+fill = 1
+fill_from = Vector2(0.490826, 0.513761)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkiag"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m5ei"]
+atlas = ExtResource("1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dix6e"]
+atlas = ExtResource("1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe8op"]
+atlas = ExtResource("1")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohlto"]
+atlas = ExtResource("1")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qdq66"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkiag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m5ei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dix6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe8op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohlto")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Torch" type="Node2D"]
+scale = Vector2(0.25, 0.25)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -12)
+rotation = -3.14159
+color = Color(1, 0.862745, 0.188235, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_dynvd")
+texture_scale = 8.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_qdq66")
+autoplay = "default"

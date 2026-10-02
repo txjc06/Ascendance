@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://de4egdplioyur"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/gun.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://6kfq36xrgdbx" path="res://Assets/Sprites/Gun/1px All.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://b5xd4v0uouybc" path="res://Assets/Sfx/Gun/Shoot/Laser_shoot 5.wav" id="3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebo33"]
+atlas = ExtResource("2")
+region = Rect2(94, 71, 26, 11)
+
+[node name="Gun" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(11, -3)
+texture = SubResource("AtlasTexture_ebo33")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(28, -6)
+
+[node name="Fire" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3")
+volume_db = -10.0

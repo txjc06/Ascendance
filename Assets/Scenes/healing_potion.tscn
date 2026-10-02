@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://cpr5m67pyilij"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/healing_potion.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c8d5dmxct32d6" path="res://Assets/Sprites/All Potions/Red potions/poç╞o vermelha.png" id="2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_djx38"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o8mr"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1dah"]
+atlas = ExtResource("2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fisq"]
+atlas = ExtResource("2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d38ed"]
+atlas = ExtResource("2")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yi2jq"]
+atlas = ExtResource("2")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiekk"]
+atlas = ExtResource("2")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spyf4"]
+atlas = ExtResource("2")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hkhn"]
+atlas = ExtResource("2")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_18qe2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2o8mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1dah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fisq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d38ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yi2jq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiekk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spyf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hkhn")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 6.0
+}]
+
+[node name="Healing_Potion" type="Area2D"]
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_djx38")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_18qe2")
+animation = &"Default"
+autoplay = "Default"
+frame_progress = 0.135821
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,26 @@
+extends State
+
+var can_transition: bool = false
+
+@onready var ram: AudioStreamPlayer2D = $"../../Ram"
+
+
+func enter():
+	super.enter()
+	animation_player.play("Glowing")
+	await dash()
+	can_transition = true
+
+
+func dash():
+	ram.play()
+	var tween = create_tween()
+	tween.tween_property(owner, "position", player.position, 0.8)
+	await tween.finished
+
+
+func transition():
+	if can_transition:
+		can_transition = false
+
+		get_parent().change_state("Follow")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2c270p37b127"
+path="res://.godot/imported/Bone Rattling.wav-40473f5bcff147062d4f531256a6155f.sample"
+
+[deps]
+
+source_file="res://Assets/Sfx/Skeleton/Damage/Bone Rattling.wav"
+dest_files=["res://.godot/imported/Bone Rattling.wav-40473f5bcff147062d4f531256a6155f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=0
+compress/mode=0

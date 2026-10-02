@@ -1,0 +1,162 @@
+[gd_scene load_steps=16 format=3 uid="uid://8bat4557u26m"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/slime.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bh4u0tw8jair1" path="res://Assets/Sprites/toolkit_1.2/toolkit/sprites/slime.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://8t3bugvmu2nb" path="res://Assets/Sfx/Slime/Death/boom.wav" id="4"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_uq86w"]
+a = Vector2(0, -12)
+b = Vector2(-18, -12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsscc"]
+atlas = ExtResource("2")
+region = Rect2(15, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mohp7"]
+atlas = ExtResource("2")
+region = Rect2(63, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy7yn"]
+atlas = ExtResource("2")
+region = Rect2(111, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0jr4"]
+atlas = ExtResource("2")
+region = Rect2(159, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mt8i"]
+atlas = ExtResource("2")
+region = Rect2(207, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyvha"]
+atlas = ExtResource("2")
+region = Rect2(15, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc8sb"]
+atlas = ExtResource("2")
+region = Rect2(63, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3k6h"]
+atlas = ExtResource("2")
+region = Rect2(111, 80, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2if5y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsscc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mohp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy7yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0jr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mt8i")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyvha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc8sb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3k6h")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mew7g"]
+size = Vector2(17, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nuk86"]
+size = Vector2(17, 10)
+
+[node name="Slime" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1")
+
+[node name="Damage_Enemy_Area" type="Area2D" parent="."]
+
+[node name="Insta Kill" type="CollisionShape2D" parent="Damage_Enemy_Area"]
+position = Vector2(9, 0)
+shape = SubResource("SegmentShape2D_uq86w")
+debug_color = Color(0.960784, 0, 0, 0.419608)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, -8)
+sprite_frames = SubResource("SpriteFrames_2if5y")
+animation = &"Idle"
+
+[node name="Anim_Timer" type="Timer" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+wait_time = 0.9
+
+[node name="Enemy_Damage_Zone" type="Area2D" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+position = Vector2(1, 0)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Enemy_Damage_Zone"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_mew7g")
+
+[node name="Attack_Cooldown" type="Timer" parent="AnimatedSprite2D/Enemy_Damage_Zone"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_nuk86")
+debug_color = Color(0.921946, 5.60242e-05, 0.689338, 0.42)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -4)
+target_position = Vector2(14, 0)
+collision_mask = 4
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -4)
+target_position = Vector2(-13, 0)
+collision_mask = 4
+
+[node name="RayCastDownLeft" type="RayCast2D" parent="."]
+position = Vector2(-12, 0)
+target_position = Vector2(0, 11)
+collision_mask = 4
+
+[node name="RayCastDownRight" type="RayCast2D" parent="."]
+position = Vector2(11, 0)
+target_position = Vector2(0, 11)
+collision_mask = 4
+
+[node name="Boom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4")
+volume_db = -10.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_nuk86")
+debug_color = Color(0.977075, 0, 0.406945, 0.42)
+
+[connection signal="body_entered" from="Damage_Enemy_Area" to="." method="_on_damage_enemy_area_body_entered"]
+[connection signal="timeout" from="AnimatedSprite2D/Anim_Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AnimatedSprite2D/Enemy_Damage_Zone/Attack_Cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

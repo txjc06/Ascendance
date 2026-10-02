@@ -1,0 +1,172 @@
+[gd_scene load_steps=23 format=3 uid="uid://dn4toypgyo6nx"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/falling_platform_wooden.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cur1q5ifnijgm" path="res://Assets/Sprites/toolkit_1.2/toolkit/animations/vanishing_platform.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu857"]
+atlas = ExtResource("2")
+region = Rect2(0, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8ho5"]
+atlas = ExtResource("2")
+region = Rect2(48, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16wfe"]
+atlas = ExtResource("2")
+region = Rect2(96, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euy3k"]
+atlas = ExtResource("2")
+region = Rect2(144, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbutk"]
+atlas = ExtResource("2")
+region = Rect2(192, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwra8"]
+atlas = ExtResource("2")
+region = Rect2(240, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0n4q"]
+atlas = ExtResource("2")
+region = Rect2(288, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3yt8"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r148h"]
+atlas = ExtResource("2")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn4vb"]
+atlas = ExtResource("2")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at3rn"]
+atlas = ExtResource("2")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vimq"]
+atlas = ExtResource("2")
+region = Rect2(192, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xelu7"]
+atlas = ExtResource("2")
+region = Rect2(240, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhh07"]
+atlas = ExtResource("2")
+region = Rect2(288, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ed3j"]
+atlas = ExtResource("2")
+region = Rect2(336, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjieq"]
+atlas = ExtResource("2")
+region = Rect2(384, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ors15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu857")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8ho5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16wfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euy3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbutk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwra8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0n4q")
+}],
+"loop": false,
+"name": &"Fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3yt8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r148h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn4vb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at3rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vimq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xelu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhh07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ed3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjieq")
+}],
+"loop": false,
+"name": &"Rise",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5od1"]
+size = Vector2(34, 8)
+
+[sub_resource type="Gradient" id="Gradient_oos62"]
+offsets = PackedFloat32Array(0, 0.701299)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hbq02"]
+gradient = SubResource("Gradient_oos62")
+fill = 1
+fill_from = Vector2(0.495413, 0.5)
+
+[node name="Falling_Platform_Wooden" type="StaticBody2D"]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ors15")
+animation = &"Fall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -12)
+shape = SubResource("RectangleShape2D_e5od1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(18, -13)
+texture = SubResource("GradientTexture2D_hbq02")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -16)
+rotation = -3.14171
+scale = Vector2(5.635, 1)
+target_position = Vector2(-0.00170687, 14)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

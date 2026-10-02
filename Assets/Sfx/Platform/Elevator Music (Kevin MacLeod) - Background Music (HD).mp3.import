@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6dbp2skwn06u"
+path="res://.godot/imported/Elevator Music (Kevin MacLeod) - Background Music (HD).mp3-9a62d08cf7b83f0a1b88256b09fd1c96.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sfx/Platform/Elevator Music (Kevin MacLeod) - Background Music (HD).mp3"
+dest_files=["res://.godot/imported/Elevator Music (Kevin MacLeod) - Background Music (HD).mp3-9a62d08cf7b83f0a1b88256b09fd1c96.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

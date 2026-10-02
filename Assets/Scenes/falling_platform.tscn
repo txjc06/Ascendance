@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://b5c38di6xnl4i"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/falling_platform.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dq8h7cobq6uov" path="res://Assets/Sprites/toolkit_1.2/toolkit/tileset.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1akil"]
+atlas = ExtResource("2")
+region = Rect2(288, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox5kx"]
+atlas = ExtResource("2")
+region = Rect2(304, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggo44"]
+atlas = ExtResource("2")
+region = Rect2(320, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttovb"]
+atlas = ExtResource("2")
+region = Rect2(288, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf580"]
+atlas = ExtResource("2")
+region = Rect2(304, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hip7j"]
+atlas = ExtResource("2")
+region = Rect2(320, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_222nb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1akil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox5kx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggo44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttovb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf580")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hip7j")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4fox"]
+size = Vector2(16, 3)
+
+[sub_resource type="Gradient" id="Gradient_8rvl8"]
+offsets = PackedFloat32Array(0, 0.746753)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pht62"]
+gradient = SubResource("Gradient_8rvl8")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Falling_Platform" type="StaticBody2D"]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_222nb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_e4fox")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_pht62")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -4)
+target_position = Vector2(0, -12)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

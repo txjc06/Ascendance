@@ -1,0 +1,17 @@
+# Godot 4 engine cache — regenerated on import, never commit
+.godot/
+
+# GDRE (Godot RE Tools) recovery artifacts — not part of the project
+.autoconverted/
+gdre_export.log
+
+# Exported builds (distributed via GitHub Releases instead)
+/build/
+/export/
+*.pck
+*.exe
+*.apk
+
+# OS junk
+.DS_Store
+Thumbs.db

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cevtc1lab0hjy"
+path="res://.godot/imported/Laser_shoot 10.wav-6081c88852b9a5b790cd2c2a7aea909e.sample"
+
+[deps]
+
+source_file="res://Assets/Sfx/Skeleton/Shoot/Laser_shoot 10.wav"
+dest_files=["res://.godot/imported/Laser_shoot 10.wav-6081c88852b9a5b790cd2c2a7aea909e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=0
+compress/mode=0
