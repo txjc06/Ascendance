@@ -1,6 +1,7 @@
 # Ascendance
 
-A 2D platformer made with **Godot 4.3**.
+A 2D platformer made with **Godot 4.3**, created as a high school final project
+(*završni rad*) at **Tehnička škola za računalstvo i mrežne djelatnosti**.
 
 The original source code was lost. It has since been recovered from the released
 builds and is now available in this repository.
